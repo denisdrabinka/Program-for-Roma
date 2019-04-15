@@ -206,55 +206,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Документ" IsSelected="True">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
 
-                    <!--IsToolBarVisible="True"-->
-                    <FlowDocumentScrollViewer IsToolBarVisible="True" Name="docViewer" >
-                      <FlowDocument>
-                        <BlockUIContainer>
-                            <Grid Name="Doc">
-                                
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                
-                                <TextBlock  Name="DocName"  Margin="10" HorizontalAlignment="Center" Text="?????????????"></TextBlock>
-                                
-                                <DataGrid Grid.Row="1" Margin="50" Padding="30" AutoGenerateColumns="False" 
-                                  x:Name="dataGridTableDoc" 
-                                  ItemsSource="{Binding Orders4}"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                                          ScrollViewer.VerticalScrollBarVisibility="Hidden">
-
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Binding="{Binding Id}" Header="Id"  Width="Auto"></DataGridTextColumn>
-                                    <DataGridTextColumn Binding="{Binding Number}" Header="номер" Width="Auto"></DataGridTextColumn>
-                                    <DataGridTextColumn Binding="{Binding DateofReceipt}" Header="дата поступления" Width="Auto"></DataGridTextColumn>
-                                    <DataGridTextColumn Binding="{Binding CustomerAddress}" Header="адрес" Width="Auto"></DataGridTextColumn>
-                                    <DataGridTextColumn Binding="{Binding CustomerPhone}" Header="телефон" Width="Auto"></DataGridTextColumn>
-                                </DataGrid.Columns>
-                                            
-                            </DataGrid>
-                          </Grid>
-                        </BlockUIContainer>
-                     </FlowDocument>
-                </FlowDocumentScrollViewer>
-
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button Content="Запрос" Margin="10" Command="{Binding DocumentView}"/>
-                        <Button Content="Принтер" Margin="10" Command="{Binding DocumentPrint}"></Button>
-                        <Button Content="Принтер2" Margin="10" Click="Save_Click"></Button>
-
-                    </StackPanel>
-                    
-                </Grid>
-            </TabItem>
 
 
         </TabControl>

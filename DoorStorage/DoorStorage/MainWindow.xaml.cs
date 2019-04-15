@@ -32,59 +32,6 @@ namespace DoorStorage
             InitializeComponent();
             this.DataContext = new MainWindowViewModel();
         }
-
-
-
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    PrintDG print = new PrintDG();
-
-        //    print.printDG(dataGridTableDoc, "Title");
-
-        //    //System.Windows.Controls.PrintDialog Printdlg = new System.Windows.Controls.PrintDialog();
-        //    //if ((bool)Printdlg.ShowDialog().GetValueOrDefault())
-        //    //{
-        //    //    Size pageSize = new Size(Printdlg.PrintableAreaWidth, Printdlg.PrintableAreaHeight);
-        //    //    //sizing of the element.
-        //    //    dataGridTableDoc.Measure(pageSize);
-        //    //    dataGridTableDoc.Arrange(new Rect(5, 5, pageSize.Width, pageSize.Height));
-        //    //    Printdlg.PrintVisual(dataGridTableDoc, Title);
-        //    //}
-
-        //}
-
-        private void Save_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult result = MessageBox.Show(Properties.Resources.s_EN_Question_Print, "Print", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
-            {
-            
-                try
-                {
-                    var border = VisualTreeHelper.GetChild(dataGridTableDoc, 0) as Decorator;
-                    if (border != null)
-                    {
-                        var scrollViewer = border.Child as ScrollViewer;
-                        if (scrollViewer != null)
-                        {
-                            scrollViewer.ScrollToTop();
-                            scrollViewer.ScrollToLeftEnd();
-                        }
-                    }
-
-                    Title = "_initialTitle" + " - " + Properties.Resources.s_EN_Info_Printing;
-
-                    var myPrinter = new UIPrinter { Title = Title, Content = dataGridTableDoc };
-                    int nbrOfPages = myPrinter.Print();
-
-                    Title = "_initialTitle" + " - " + Properties.Resources.s_EN_Info_PrintingDone + ( " " + nbrOfPages + " Pages");
-                }
-                catch (Exception ex)
-                {
-                    Title = "_initialTitle" + " - " + ex.Message;
-                }
-
-            }
-        }
+       
     }
 }
