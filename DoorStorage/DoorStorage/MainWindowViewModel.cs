@@ -26,8 +26,6 @@ namespace DoorStorage
         RelayCommand deleteAllCommand;
         RelayCommand sum;
         RelayCommand textChangedCommand;
-        RelayCommand documentView;
-        RelayCommand documentPrint;
 
 
         MainWindow main = (MainWindow)Application.Current.MainWindow;
@@ -121,113 +119,6 @@ namespace DoorStorage
 
         }
 
-        public RelayCommand DocumentPrint
-        {
-            get
-            {
-                return documentPrint ??
-                  (documentPrint = new RelayCommand((t) =>
-                  {
-
-                  PrintDialog printDialog = new PrintDialog(); if (printDialog.ShowDialog() == true)
-                      {
-
-                          printDialog.PrintDocument(((IDocumentPaginatorSource)main.docViewer.Document).DocumentPaginator, "A Flow Document");
-
-                          //FlowDocument doc = (FlowDocument)main.docViewer.Document;
-                          //doc.PageHeight = printDialog.PrintableAreaHeight;
-                          //doc.PageWidth = printDialog.PrintableAreaWidth;
-
-                          //printDialog.PrintDocument(
-                          //    ((IDocumentPaginatorSource)main.docViewer.Document).DocumentPaginator,
-                          //    "A Flow Document");
-
-                          //FlowDocument doc = main.docViewer.Document as FlowDocument;
-                          //main.docViewer.Document = null;
-
-                          //doc.PagePadding = new Thickness(96 * 0.25, 96 * 0.75, 96 * 0.25, 96 * 0.25);
-
-                          //HeaderedFlowDocumentPaginator paginator =
-                          //    new HeaderedFlowDocumentPaginator(doc);
-
-                          //printDialog.PrintDocument(paginator, "Headered Flow Document");
-                          //main.docViewer.Document = doc;
-
-                      }
-
-                      //PrintDialog dlg = new PrintDialog();
-
-                      //if ((bool)dlg.ShowDialog().GetValueOrDefault())
-                      //{
-                      //    DocumentPaginator pag = ((IDocumentPaginatorSource)main.docViewer.Document).DocumentPaginator;
-                      //    dlg.PrintDocument(pag, "title");
-                      //}
-
-
-                      OnPropertyChanged("DocumentView");
-                      
-                  }));
-            }
-        }
-
-
-
-        public RelayCommand DocumentView
-        {
-            get
-            {
-                return documentView ??
-                  (documentView = new RelayCommand((t) =>
-                  {
-                      using (Context db = new Context())
-                      {
-
-                          WindowCRUD_2 crud = new WindowCRUD_2();
-                          crud.ShowDialog();
-
-                          if (crud.DialogResult == false)
-                              return;
-
-                          string nameMagazin = crud.Magazin.SelectionBoxItem.ToString();
-                          if(nameMagazin == "")
-                          {
-                              main.DocName.Text = "Не указан магазин!!!!!!";
-                          }
-                          else
-                          {
-                              main.DocName.Text = nameMagazin;
-                          }
-
-                          string month = crud.Month.SelectionBoxItem.ToString();
-                          if (month == "")
-                          {
-                              month = "not";
-                          }
-                          string year = Convert.ToString(DateTime.Now.Year);
-
-                          string filter = month + "." + year;
-
-                          ICollectionView viewSource = CollectionViewSource.GetDefaultView(main.dataGridTableDoc.ItemsSource);
-                          if (filter == "") viewSource.Filter = null;
-                          else
-                          {
-                              viewSource.Filter = o =>
-                              {
-                                  TableOrder p = o as TableOrder;
-                                  return p.DateofReceipt.ToString().Contains(filter) && p.DoorSource.ToString().Contains(nameMagazin);
-
-                              };
-
-                              //DataTable dt = CreateDataTable(viewSource);
-                              
-                              main.dataGridTableDoc.ItemsSource = viewSource;
-                          }
-
-                          OnPropertyChanged("DocumentView");
-                      }
-                  }));
-            }
-        }
 
         //public static DataTable CreateDataTable(IEnumerable source)
         //{

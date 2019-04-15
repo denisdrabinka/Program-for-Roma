@@ -86,21 +86,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Context.cs" />
-    <Compile Include="HeaderedFlowDocumentPaginator.cs" />
     <Compile Include="MainWindowViewModel.cs" />
-    <Compile Include="PrintDG.cs" />
-    <Compile Include="PrintDG_2.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="TableOrder.cs" />
-    <Compile Include="UIPrinter.cs" />
     <Compile Include="WindowCRUD.xaml.cs">
       <DependentUpon>WindowCRUD.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowCRUD_2.xaml.cs">
       <DependentUpon>WindowCRUD_2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WpfPrinting.cs" />
-    <Compile Include="WpfPrinting_2.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
