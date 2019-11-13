@@ -10,5 +10,6 @@ namespace DoorStorage
     {
         int i1;
         int i2;
+        int i3;
     }
 }
