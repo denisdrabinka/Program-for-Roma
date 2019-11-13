@@ -523,9 +523,15 @@ namespace DoorStorage
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
+<<<<<<< HEAD
         ///deefege
         ///ehehehehe
         ///eehehhe
+=======
+        ///dhjdhdjddd
+        ///dddddndkdd
+        ///dddddmdmdm
+>>>>>>> den
     }
 }
 
